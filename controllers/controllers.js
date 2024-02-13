@@ -12,7 +12,7 @@ function generateAccess(id,username){
     return jwt.sign(payload,secret,{expiresIn:"24h"})
 }
 const openai = new OpenAI({
-  apiKey: "your-api-key"
+  apiKey: ""
 });
 
 const chatGPT = async(content,option)=>{

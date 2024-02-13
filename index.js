@@ -14,7 +14,7 @@ app.use("/",route);
  
 
 const start = async () =>{
-    mongoose.connect("mongodb+srv://@cluster0.x2eea6u.mongodb.net/DoWAI?retryWrites=true&w=majority") 
+    mongoose.connect("mongodb+srv://nukowa:nukowa2004@cluster0.x2eea6u.mongodb.net/DoWAI?retryWrites=true&w=majority") 
     app.listen(3000,()=>{
     console.log("Running on port 3000");
     })
