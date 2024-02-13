@@ -1,0 +1,553 @@
+@import url('https://fontst-famil.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&display=swap');
+/* font-family: 'Josefin Sans', sans-serif; */
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&family=Tilt+Neon&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+body{
+    background:rgb(107, 191, 255);
+    height: 100%;
+
+}
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+.sidebar{
+    left: -60px;
+    width: 60px;
+    height: 100vh;
+    background: white;
+    position: absolute;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+}
+.text{
+    margin-top: 50px;
+    font-size: 50px;
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Tilt Neon', sans-serif;
+    font-weight: 200;
+    text-shadow: 3px 3px 6px blueviolet;
+}
+.calendar-icon:hover{
+    border-radius: 30%;
+    background: #00b3ff26;
+    transform: scale(1.1);
+}
+.add{
+    font-weight: 600;
+    height: 45px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 13px;
+    color: rgb(0, 0, 0);
+    background: #00f7ff69;
+    box-shadow: 2px 2px 5px rgb(99, 106, 171);
+    transition: 0.2s;
+} 
+.add:hover{
+    color: white;
+    background: #00c3ff;
+    transform: scale(1.05);
+}
+.add:active{
+    transform: scale(1);
+}
+.tasks{
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 63%;
+    height: auto;
+    gap: 10px;
+}
+.task{
+    letter-spacing: 0.5px;
+    padding: 10px 30px;
+    position: relative;
+    display: flex;
+    border-radius: 10px;
+    height: 55px;
+    width: 50%;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: end;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    font-size: 25px;
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+    transition: 0.2s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+.High{
+    background: rgba(255, 114, 114, 0.358);
+}
+.Medium{
+    background: rgba(0, 240, 253, 0.138);
+}
+.Low{
+    background: rgba(10, 255, 6, 0.358);
+}
+@media(max-width: 900px){
+    .tasks{
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        width: 63%;
+        height: auto;
+        gap: 10px;
+    }
+    .task{
+        padding: 0 30px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        height: 135px;
+        min-width: 230px;
+        max-width: 300px;
+        flex-grow: 1;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .more{
+        margin-top: 20px;
+        display: flex;
+        gap: 50px;
+        justify-content: center;
+        align-items:center;
+    }
+    
+}
+
+
+.disappearing{
+    animation: disappearing 1.2s ease-in;
+}
+@keyframes disappearing{
+    0%{
+        transform: translateX(0);
+        opacity: 1;
+    }100%{
+        transform: translate(-600px);
+        opacity: 0;
+    }
+}
+.delete{
+    cursor: pointer;
+    top: 12%;
+    left: 7%;
+    position: absolute;
+    transform: scale(2.3);
+    transition: 0.15s;
+}
+.delete:hover{
+    transform: scale(2.7);
+}
+.task:hover{
+    transform: scale(1.05);
+}
+.time{
+    top: 5px;
+    left: 85%;
+    font-size: 15px;
+    position: absolute;
+    color: rgb(255, 255, 255);
+}
+.icon{
+    cursor: pointer;
+    transition: 0.25s;
+    width: 25px;
+}
+.icon:hover{
+    transform: scale(1.15);
+}
+.modal-add{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    letter-spacing: 1.2px;
+    z-index: 1;
+    gap: 15px;
+    padding: 60px 40px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    top: 18%;
+    width: 411px;
+    height: 360px;
+    position: fixed;
+    background: #5dffb3;
+    display: none;
+}
+.dateDay{
+    margin-top: 10px;
+}
+.calendar-icon{
+    width: 35px;
+    top: 15%;
+    left: 2%;
+    position: absolute;
+    transition: 0.2s;
+}
+.priority{
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 10px;
+    width: 110px;   
+}
+.red,.green,.blue{
+    font-weight: 600;
+}
+.red{
+    color: rgb(255, 0, 106);
+}
+.green{
+    color: rgb(130, 255, 47);
+}
+.blue{
+    color:  rgb(0, 221, 255);
+}
+.zoom{
+    transition: 0.1s;
+    animation: zoom 0.8s ease-in-out 1;
+    border: 3px solid rgba(255, 0, 0, 0.525);
+}
+
+@keyframes zoom{
+    0%{
+        transform: scale(1);
+    }50%{
+        transform: scale(1.05);
+    }100%{
+        transform: scale(1);
+    }
+}
+
+.taskText{
+    font-family: 'Tilt Neon', sans-serif;
+    font-weight: 200;
+    text-shadow: 3px 3px 6px rgb(43, 162, 226);
+    font-size: 30px;
+    left: 7%;
+    top: 3%;
+    position: absolute;
+    border-bottom: 3px solid rgba(80, 47, 200, 0.362);
+}
+.title{
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 80%;
+    margin-top: 30px;
+    font-size: 18px;
+    transition: 0.2s;
+
+}
+.title-modal{
+    text-align: left;
+    border: none;
+    background: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: rgb(0, 0, 0);
+    border-bottom: 1.3px solid black;
+}
+.title:focus{
+    outline: none;
+    transform: translate(3px,5px);
+}
+input[type=time] {
+    border: none;
+    color: #2a2c2d;
+    font-size: 14px;
+    font-family: helvetica;
+    width: 160px;
+    background: #00000000;
+}
+input[type=time]:focus{
+    outline: none;
+}
+
+
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+    background: rgba(255, 255, 255, 0);
+}
+
+input[type=time]::-webkit-datetime-edit-text {
+    padding: 19px 4px;
+}
+ 
+input[type=time]::-webkit-datetime-edit-hour-field,input[type=time]::-webkit-datetime-edit-minute-field {
+    background-color: #0000003b;
+    color: white;
+    border-radius: 15%;
+    padding: 19px 13px;
+}
+
+  
+input[type=time]::-webkit-datetime-edit-ampm-field {
+    background-color: #7155d3;
+    border-radius: 15%;
+    color: #fff;
+    padding: 19px 13px;
+  }
+
+input[type=time]::-webkit-clear-button {
+    display: none;
+}
+
+input[type="time"]::-webkit-inner-spin-button { 
+    -webkit-appearance: none;
+    cursor:pointer;
+    display: block;
+    width:20px;
+    color: red;
+    text-align:center;
+    position:relative;
+} 
+.descr{
+    letter-spacing: 1.2px;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 10px;
+    resize: none;
+    transition: 0.15s;
+}
+.descr:focus{
+    outline:1px solid rgba(0, 0, 0, 0.44) ;
+    transform: scale(1.03);
+}
+
+.confirm{
+    border-radius: 10px;
+    font-weight: 600;
+    color: white;
+    background: #00000033;
+    padding: 10px 25px;
+    transition: 0.2s;
+}
+.confirm:hover{
+    transform: scale(1.07);
+}
+.confirm:active{
+    transform: scale(1);
+}
+.more{
+    font-size: 11.2px;
+    margin: 20px 18% 5px 0;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items:end;
+}
+.finished{
+    margin-bottom: 1.3px;
+    cursor: pointer;
+    transform: scale(2.3);
+}
+.finished:hover{ 
+    transform: scale(2.5);
+}
+.modal-description{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;    
+    border-radius: 20px;
+    justify-content: space-around;
+    gap: 20px;
+    align-items: center;
+    top: 25vh;
+    /* left: 33vw; */
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: auto;
+    background: rgb(47, 255, 130);
+    position: fixed;
+    z-index: 1;
+    display: none;
+}
+
+
+
+.description{
+    text-align: center;
+    width: 100%;
+    letter-spacing: 1.3px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 19.5px;
+}
+.splitDown,.help{
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 2px 4px;
+    background: #00000022;
+    color: white;
+    font-family: 'Tilt Neon', sans-serif;
+    letter-spacing: 1.3px;
+    font-size: 21px;
+    transition: 0.2s;
+}
+.splitDown:hover,.help:hover{
+    transform: scale(1.12);
+}
+.aiButtons{
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+
+}
+.deadline,.time{
+    font-family: 'Tilt Neon', sans-serif;
+    font-weight: 600;
+    color: rgba(255, 0, 81, 0.719);
+}
+.Notes{
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    align-items: center;
+    width: 100%;
+}
+.note{
+    padding: 5px;
+    border-radius: 7px;
+    width: 65%;
+    height: 30px;
+}
+.btn-send{
+    margin-left: -15px;
+    transform: scale(0.85);
+}
+
+.send{
+    transform: scale(1.4);
+}
+
+.canvas-notes{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.noteWindow{
+    overflow-y: scroll;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}  
+.noteWindow::-webkit-scrollbar{
+}
+.note-Input{
+    width: 330px;
+}
+.noteInput{
+    display: flex;
+    align-items: center;
+}
+.addedNode{
+    font-size: 13.5px;
+    position: relative;
+}
+.nodeText{
+    border-radius: 7px;
+    padding: 5px;
+    background: #00fff22c;
+    margin-top: 6%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.nodeTime{
+    font-size: 11px;
+    position: absolute;
+    left:65%;
+    top: 2px;
+}
+.card-body{
+    position: relative;
+    width: 100%;
+    overflow-y: scroll;
+    max-height: 150px;
+}
+.card-body::-webkit-scrollbar{
+    display: none;
+}
+.row{
+    width: 100%;
+}
+
+
+.loader{
+    position: absolute;
+    left: 14px;
+    top: 14px;
+    width:40px;
+    height:7px;
+    background: radial-gradient(circle closest-side,#766DF4 90%,#0000) 0 0/33.3% 100% space;
+    clip-path: inset(0 100% 0 0);
+    animation:d1 1s steps(4) infinite;
+}
+@keyframes d1 {to{clip-path: inset(0 -34% 0 0)}}
+#liveToastBtn{
+    width: 90px;
+    margin: 0 0 5px;
+}
+.log-manage{
+    width: 200px;
+    height: 50px;
+    right: 6%;
+    top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    position: absolute;
+    gap: 15px;
+}
+.log{
+    border: 0.3px solid black;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    background: #00f7ff69;
+    box-shadow: 2px 2px 5px rgb(99, 106, 171);
+    border-radius: 7px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+.log:hover{
+    color: white;
+    background: #00c3ff;
+}
+.log:active{
+    transform: scale(0.95);
+}
+.empty{
+    margin-top: 40px;
+    font-size: 23px;
+    font-weight: 500;
+}
+.btn-close{
+    position: absolute;
+    top: 17px;
+    right: 22px;
+}

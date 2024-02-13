@@ -1,0 +1,420 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&family=Tilt+Neon&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #2c3e50;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.wrapper {
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar {
+    left: -60px;
+    width: 60px;
+    height: 100vh;
+    background: #34495e;
+    position: absolute;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+}
+
+.text {
+    margin-top: 50px;
+    font-size: 50px;
+    color: #ecf0f1;
+    font-weight: 200;
+    text-shadow: 3px 3px 6px #bdc3c7;
+}
+
+.add {
+    font-weight: 600;
+    height: 45px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 20px;
+    padding-left: 13px;
+    color: #fff;
+    background: #3498db;
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    box-shadow: 2px 2px 5px #34495e;
+    transition: 0.2s;
+}
+
+.add:hover {
+    transform: scale(1.05);
+}
+
+.add:active {
+    transform: scale(1);
+}
+
+.tasks {
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    width: 63%;
+    height: auto;
+    gap: 20px;
+}
+
+.task {
+    letter-spacing: 0.5px;
+    padding: 10px 5px;
+    border: 3px solid rgba(0, 0, 0, 0.293);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    height: 135px;
+    min-width: 230px;
+    max-width: 300px;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+    color: #ecf0f1;
+    text-align: center;
+    font-size: 11px;
+    background: #3498db;
+    background: linear-gradient(to bottom, #3498db, #2980b9);
+    font-weight: 600;
+    box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px, rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px, rgba(240, 46, 170, 0.05) 0px 25px;
+    transition: transform 0.2s;
+}
+
+.delete {
+    cursor: pointer;
+    top: 12%;
+    left: 7%;
+    position: absolute;
+    transform: scale(2.3);
+    transition: 0.15s;
+}
+
+.delete:hover {
+    transform: scale(2.7);
+}
+
+.task:hover {
+    transform: scale(1.05);
+}
+
+.time {
+    top: 7px;
+    left: 70%;
+    font-size: 15px;
+    position: absolute;
+    color: #ecf0f1;
+}
+
+.icon {
+    cursor: pointer;
+    transition: transform 0.25s;
+    width: 25px;
+}
+
+.icon:hover {
+    transform: scale(1.15);
+}
+
+.modal-add {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    letter-spacing: 1.2px;
+    z-index: 1;
+    gap: 15px;
+    padding: 60px 25px;
+    color: #ecf0f1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    top: 18%;
+    left: 35%;
+    width: 450px;
+    height: 450px;
+    position: fixed;
+    background: #2c3e50;
+    background: linear-gradient(to bottom, #34495e, #2c3e50);
+    display: none;
+}
+
+.taskText {
+    font-weight: 200;
+    text-shadow: 3px 3px 6px #2c3e50;
+    font-size: 30px;
+    left: 7%;
+    top: 3%;
+    position: absolute;
+    border-bottom: 3px solid #502fc8;
+}
+
+.title {
+    text-align: center;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 80%;
+    margin-top: 30px;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.title-modal {
+    text-align: left;
+    border: none;
+    background: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    color: #ecf0f1;
+    border-bottom: 1.3px solid #000;
+}
+
+.title:focus {
+    outline: none;
+    transform: translate(3px, 5px);
+}
+
+input[type=time] {
+    border: none;
+    color: #2a2c2d;
+    font-size: 14px;
+    font-family: helvetica;
+    width: 160px;
+    background: #00000000;
+}
+
+input[type=time]:focus {
+    outline: none;
+}
+
+input[type=time]::-webkit-datetime-edit-fields-wrapper {
+    display: flex;
+    background: rgba(255, 255, 255, 0);
+}
+
+input[type=time]::-webkit-datetime-edit-text {
+    padding: 19px 4px;
+}
+
+input[type=time]::-webkit-datetime-edit-hour-field,
+input[type=time]::-webkit-datetime-edit-minute-field {
+    background-color: #0000003b;
+    color: #ecf0f1;
+    border-radius: 15%;
+    padding: 19px 13px;
+}
+
+input[type=time]::-webkit-datetime-edit-ampm-field {
+    background-color: #7155d3;
+    border-radius: 15%;
+    color: #fff;
+    padding: 19px 13px;
+}
+
+input[type=time]::-webkit-clear-button {
+    display: none;
+}
+
+input[type="time"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    cursor: pointer;
+    display: block;
+    width: 20px;
+    color: red;
+    text-align: center;
+    position: relative;
+}
+
+.descr {
+    letter-spacing: 1.2px;
+    font-size: 14px;
+    padding: 5px;
+    border-radius: 10px;
+    resize: none;
+    transition: 0.15s;
+}
+
+.descr:focus {
+    outline: 1px solid rgba(0, 0, 0, 0.44);
+    transform: scale(1.03);
+}
+
+.confirm {
+    border-radius: 10px;
+    font-weight: 600;
+    color: #ecf0f1;
+    background: #00000033;
+    padding: 10px 25px;
+    transition: 0.2s;
+}
+
+.confirm:hover {
+    transform: scale(1.07);
+}
+
+.confirm:active {
+    transform: scale(1);
+}
+
+.more {
+    margin-top: 20px;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.finished {
+    cursor: pointer;
+    transform: scale(2.3);
+}
+
+.modal-description {
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    border-radius: 20px;
+    justify-content: space-around;
+    gap: 30px;
+    align-items: center;
+    top: 25vh;
+    left: 33vw;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: auto;
+    background: #aaff69;
+    position: absolute;
+    z-index: 1;
+    display: none;
+}
+
+.description, .splitted-description {
+    text-align: center;
+    width: 70%;
+    font-size: 19.5px;
+    letter-spacing: 1.3px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.splitDown, .help {
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 2px 4px;
+    background: #00000022;
+    color: #ecf0f1;
+    font-family: 'Tilt Neon', sans-serif;
+    letter-spacing: 1.3px;
+    font-size: 21px;
+    transition: 0.2s;
+}
+
+.splitDown:hover, .help:hover {
+    transform: scale(1.12);
+}
+
+.aiButtons {
+    display: flex;
+    gap: 20px;
+}
+
+.deadline, .time {
+    font-weight: 600;
+    color: #f00551b3;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;1,300&family=Tilt+Neon&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: all 0.5s ease;
+}
+
+body{
+    background: #1a1a2e;
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.sidebar{
+    left: -60px;
+    width: 60px;
+    height: 100vh;
+    background: #16213e;
+    position: absolute;
+}
+
+.main{
+    display: flex;
+    flex-direction: column;
+    padding: 0 60px;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    row-gap: 30px;
+}
+
+.text{
+    margin-top: 50px;
+    font-size: 50px;
+    color: #e94560;
+    font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Tilt Neon', sans-serif;
+    font-weight: 200;
+}
+
+.add{
+    font-weight: 600;
+    height: 45px;
+    width: 300px;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: 'Josefin Sans', sans-serif;
+    padding-left: 13px;
+    color: #0f3460;
+    background: #e94560;
+}
+
+.tasks{
+   /* ... */
+   background:#16213e; 
+   /* ... */
+}
+
+.task{
+   /* ... */
+   background:#16213e; 
+   /* ... */
+}
+
+/* ... */
+
+/* Добавьте свои анимации и другие стили здесь */
+
+@keyframes example {
+  from {background-color:#16213e;}
+  to {background-color:#1a1a2e;}
+}
